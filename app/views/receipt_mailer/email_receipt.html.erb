@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Hello @user.email</h1>
+    <p>
+      Here are your order details.
+    </p>
+    <% @order.line_items.each do |i| %>
+      <h3><%= i.product.name %></h3>
+      <p><%= i.product.description %></p>
+      <%= image_tag i.product.image.thumb, class: 'main-img' %>
+      <p>Quantity Ordered: <%= i.quantity %></p>
+      <p>Total Price for <%= i.product.name %>: <%= i.total_price_cents / 100.0 %></p>
+    <% end %>
+    <p>Total Order Price: <%= @order.total_cents / 100.0 %></p>
+  </body>
+</html>
